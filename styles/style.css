@@ -1,5 +1,216 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
+/*Десктоп*/
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  max-width: 1024px;
+} 
+
+.header{
+  position: relative;
+  padding:20px;
+  background-image: url('/images/cover-image-dark.png');
+  background-size: cover;
+  background-position: center; 
+
+  /*Из-за этих свойств картинка не встаёт по центру*/
+  min-height: 768px;
+  min-width: 375px;
+}
+
+.title{
+  /*Скорее всего ошибки в шрифте*/
+  position: absolute;
+  left:0px;
+  top: 300px;
+  word-spacing: 90px;
+  word-wrap: break-word;
+
+  font-family: var(--section-font, serif);
+  color:var(--header-color, #DB00FF);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: 700;
+  text-shadow: var(--header-shadow, #FF0070);
+}
+
+/*Разобраться со шрифтом (1 слово не перемещается "делать"*/
+.section{
+  background-color: var(--list-background, #FF0070);
+  color:var(--list-color, #000028);
+  font-family: var(--section-font, sans-serif);
+  font-weight: 700;
+  font-size: 18px;
+  text-wrap: wrap;
+  line-height: 23.4px;
+  word-spacing: 7px;
+}
+
+.main{
+  position: absolute;
+  width: clamp(22.188rem, 20.955vw + 17.276rem, 30.688rem);
+  bottom: 134px;
+  right: 20px;
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+/*Эллипс*/
+.decorated-zone::before {
+  content: ''; 
+  position: absolute;
+  top: 28px; 
+  right: 29px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #FF0070;
+  fill: #FF0070;
+  filter: drop-shadow(0px 0px 4px #FF0070);
+}
+
+/*Выбор темы*/
+.header__theme-menu-list{
+  font-family: var(--main-font, sans-serif);
+  color: var(--section-color,#FF0070);
+}
+
+.header__theme-menu-item{
+  font-size: 18px;
+}
+
+.header__theme-menu-list{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.header__theme-menu-button{
+  background-color: inherit;
+  padding: 0px 13px;
+  width:70px;
+  height: 26px;
+}
+
+.header__theme-menu-button:active{
+  outline: 1px solid var(--section-color, #FF0070);
+}
+
+.header__theme-menu-button:focus{
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  outline-offset: 1px;
+  outline: none;
+  border-bottom: 1px solid var(--section-color, #FF0070);
+} 
+
+.header__theme-menu-button_active{
+  outline: 1px solid var(--section-color, #FF0070);
+}
+
+.header__theme-menu-button:hover{
+  outline: 1px solid rgba(255, 0, 112, 0.40);;
+}
+
+.header__theme-menu-button_active:hover{
+  outline: 1px solid var(--section-color, #FF0070);
+}
+
+/*Квадратные рамки для тёмной темы*/
+.first-square {
+  position: absolute; /* Позиционируем квадрат абсолютно относительно header */
+  top: 20px;
+  right: 20px; 
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--section-color, #FF0070);
+  border-bottom: none;
+  border-left: none;
+}
+
+.second-square {
+  position: absolute; /* Позиционируем квадрат абсолютно относительно header */
+  left: 20px;
+  bottom: 20px; 
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--section-color, #FF0070);
+  border-right: none;
+  border-top: none;
+}
+
+.first-square::before {
+  position: absolute;
+  content: "REC"; /* текст перед квадратом */
+  right: calc(100% + 3px);
+  top: 0;
+  font-family: var(--main-font, sans-serif);
+  color:var(--section-color, #FF0070);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+/*Планшет*/
+@media screen and (max-width: 768px){
+  .header{
+    min-height: 1024px;
+  }
+
+  .header__theme-menu-list{
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    margin-top: clamp(4.063rem, 27.226vw - 2.319rem, 10.75rem);
+    gap: 10px;
+  }
+
+  .title{
+    top:448px;
+    word-spacing: 70px;
+  }
+
+  .main{
+    bottom: 183px;
+    width:clamp(22.188rem, 2.29vw + 21.651rem, 22.75rem);
+    padding-right: 20px;
+  }
+}
+
+/*Телефон*/
+@media screen and (max-width: 375px){
+  .header{
+    padding:10px;
+    min-height: 668px;
+  }
+
+  .title{
+    font-size:116px;
+    top:242px;
+    left:10px;
+    line-height: 82.5%;
+  }
+
+  .decorated-zone::before{
+    top:18px;
+    right:19px;
+  }
+  
+  .first-square{
+    top:10px;
+    right:10px;
+  }
+
+  .second-square{
+    left:10px;
+    bottom:10px;
+  }
+
+  .main{
+    bottom: 66px;
+    left:10px;
+    max-width: 355px;
+  }
 }
