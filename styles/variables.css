@@ -4,17 +4,25 @@
 */
 
 :root{
+  /*Всё, кроме текста*/
   --section-font: 'IBM Plex mono bold', sans-serif;
+  /*Текст*/
   --main-font: 'IBM Plex mono regular', sans-serif;
-  
+  /*Цвет hover-эффекта*/
+  --button-hover:rgba(255, 0, 112, 0.40);
+  /*Цвет h1*/
   --header-color:  #DB00FF;
+  /*Тень h1*/
   --header-shadow: 4px 4px 0px #FF0070;
-
+  /*Цвет h2*/
   --section-color:  #FF0070;
-  
+  /*Цвет параграфа под h1*/
   --list-color:#000028;
   --list-background:#FF0070;
-  
+  /*Цвет текста под параграфом*/
   --text-color: #F1B2CE;
+  /*bg страницы*/
   --bg-color: #000028;
+  /*Цвет текста footer*/
+  /*Цвет тени footer*/
 }

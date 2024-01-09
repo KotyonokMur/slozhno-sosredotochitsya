@@ -2,39 +2,40 @@
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
   max-width: 1024px;
-} 
+}
 
-.header{
-  position: relative;
-  padding:20px;
-  background-image: url('/images/cover-image-dark.png');
+.header {
+  background-color: var(--bg-color, #000028);
+  padding: 20px;
+  background-image: url("/images/cover-image-dark.png");
   background-size: cover;
-  background-position: center; 
-
-  /*Из-за этих свойств картинка не встаёт по центру*/
+  background-position: center;
   min-height: 768px;
   min-width: 375px;
 }
 
-.title{
+/*h1*/
+.title {
   /*Скорее всего ошибки в шрифте*/
   position: absolute;
-  left:0px;
+  left: 0px;
   top: 300px;
   word-spacing: 90px;
   word-wrap: break-word;
-
+  /*В идеале надо было сделать так, чтобы этот класс применялся и к footer*/
+  /*Не смог сделать из-за того, что запихал сюда позиционирование*/
+  /*При перекидывании позиционки в h ломается страница т.к. сделано с помощью abs/rel*/
   font-family: var(--section-font, serif);
-  color:var(--header-color, #DB00FF);
+  color: var(--header-color, #db00ff);
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
-  text-shadow: var(--header-shadow, #FF0070);
+  text-shadow: var(--header-shadow, #ff0070);
 }
 
 /*Разобраться со шрифтом (1 слово не перемещается "делать"*/
-.section{
-  background-color: var(--list-background, #FF0070);
-  color:var(--list-color, #000028);
+.section {
+  background-color: var(--list-background, #ff0070);
+  color: var(--list-color, #000028);
   font-family: var(--section-font, sans-serif);
   font-weight: 700;
   font-size: 18px;
@@ -43,7 +44,48 @@
   word-spacing: 7px;
 }
 
-.main{
+/*h2*/
+.section-title {
+  color: var(--section-color, #ff0070);
+  font-family: var(--section-font, sans-serif);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23.4px;
+  display:block;
+  width: clamp(14.75rem, 30.859vw - 0.063rem, 19.688rem);
+  /*Упирается в соседний контейнер!!!!!!!!!!!!!!!*/
+}
+
+/*Текст под секцией*/
+.section-text {
+  color:var(--text-color, #F1B2CE);
+}
+
+.section-list{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
+
+.section-list_item{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+.group{
+  display: flex;
+  background-color: var(--bg-color, #000028);
+  padding: 60px 20px 20px 20px;
+}
+
+.group:nth-child(2) {
+  flex-direction: row;
+  gap:20px;
+}
+
+/*Позиционка описания страницы*/
+.about {
   position: absolute;
   width: clamp(22.188rem, 20.955vw + 17.276rem, 30.688rem);
   bottom: 134px;
@@ -55,77 +97,78 @@
 }
 
 /*Эллипс*/
-.decorated-zone::before {
-  content: ''; 
+.header.decorated-zone::before {
+  content: "";
   position: absolute;
-  top: 28px; 
+  top: 28px;
   right: 29px;
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background-color: #FF0070;
-  fill: #FF0070;
-  filter: drop-shadow(0px 0px 4px #FF0070);
+  background-color: var(--list-background, #ff0070);
+  fill: #ff0070;
+  filter: drop-shadow(0px 0px 4px #ff0070);
 }
 
 /*Выбор темы*/
-.header__theme-menu-list{
+.header__theme-menu-list {
   font-family: var(--main-font, sans-serif);
-  color: var(--section-color,#FF0070);
+  color: var(--section-color, #ff0070);
 }
 
-.header__theme-menu-item{
+.header__theme-menu-item {
   font-size: 18px;
 }
 
-.header__theme-menu-list{
+.header__theme-menu-list {
   display: flex;
   justify-content: center;
   flex-direction: row;
   gap: 10px;
 }
 
-.header__theme-menu-button{
+.header__theme-menu-button {
   background-color: inherit;
+  cursor: pointer;
   padding: 0px 13px;
-  width:70px;
+  width: 70px;
   height: 26px;
 }
 
-.header__theme-menu-button:active{
-  outline: 1px solid var(--section-color, #FF0070);
+.header__theme-menu-button:active {
+  outline: 1px solid var(--section-color, #ff0070);
 }
 
-.header__theme-menu-button:focus{
+.header__theme-menu-button:focus {
   outline: none;
 }
 
 .header__theme-menu-button:focus-visible {
   outline-offset: 1px;
   outline: none;
-  border-bottom: 1px solid var(--section-color, #FF0070);
-} 
-
-.header__theme-menu-button_active{
-  outline: 1px solid var(--section-color, #FF0070);
+  border-bottom: 1px solid var(--section-color, #ff0070);
 }
 
-.header__theme-menu-button:hover{
-  outline: 1px solid rgba(255, 0, 112, 0.40);;
+.header__theme-menu-button_active {
+  outline: 1px solid var(--section-color, #ff0070);
 }
 
-.header__theme-menu-button_active:hover{
-  outline: 1px solid var(--section-color, #FF0070);
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--button-hover, rgba(255, 0, 112, 0.4));
+}
+
+.header__theme-menu-button_active:hover {
+  outline: 1px solid var(--section-color, #ff0070);
 }
 
 /*Квадратные рамки для тёмной темы*/
 .first-square {
   position: absolute; /* Позиционируем квадрат абсолютно относительно header */
   top: 20px;
-  right: 20px; 
+  right: 20px;
   width: 25px;
   height: 25px;
-  border: 2px solid var(--section-color, #FF0070);
+  border: 2px solid var(--section-color, #ff0070);
   border-bottom: none;
   border-left: none;
 }
@@ -133,33 +176,58 @@
 .second-square {
   position: absolute; /* Позиционируем квадрат абсолютно относительно header */
   left: 20px;
-  bottom: 20px; 
+  bottom: 20px;
   width: 25px;
   height: 25px;
-  border: 2px solid var(--section-color, #FF0070);
+  border: 2px solid var(--section-color, #ff0070);
   border-right: none;
   border-top: none;
 }
 
-.first-square::before {
+/* текст перед квадратом */
+.header .first-square::before {
   position: absolute;
-  content: "REC"; /* текст перед квадратом */
+  content: "REC";
   right: calc(100% + 3px);
   top: 0;
   font-family: var(--main-font, sans-serif);
-  color:var(--section-color, #FF0070);
+  color: var(--section-color, #ff0070);
   font-size: 16px;
   font-weight: 400;
   line-height: 25px;
 }
 
+/*Подвал*/
+.footer {
+  background-color: var(--bg-color, #000028);
+  min-height: 768px;
+  min-width: 375px;
+  padding: 20px;
+
+  font-family: var(--section-font, serif);
+  color: var(--header-color, #db00ff);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: 700;
+  text-shadow: var(--header-shadow, #ff0070);
+  text-align: center;
+  letter-spacing: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .first-square::before {
+  display: none;
+}
+
 /*Планшет*/
-@media screen and (max-width: 768px){
-  .header{
+@media screen and (max-width: 768px) {
+  .header {
     min-height: 1024px;
   }
 
-  .header__theme-menu-list{
+  .header__theme-menu-list {
     display: flex;
     align-items: end;
     flex-direction: column;
@@ -167,50 +235,60 @@
     gap: 10px;
   }
 
-  .title{
-    top:448px;
+  .title {
+    top: 448px;
     word-spacing: 70px;
   }
 
-  .main{
+  .about {
     bottom: 183px;
-    width:clamp(22.188rem, 2.29vw + 21.651rem, 22.75rem);
+    width: clamp(22.188rem, 2.29vw + 21.651rem, 22.75rem);
     padding-right: 20px;
+  }
+
+  .footer {
+    min-height: 1024px;
   }
 }
 
 /*Телефон*/
-@media screen and (max-width: 375px){
-  .header{
-    padding:10px;
+@media screen and (max-width: 375px) {
+  .header {
+    padding: 10px;
     min-height: 668px;
   }
 
-  .title{
-    font-size:116px;
-    top:242px;
-    left:10px;
+  .title {
+    font-size: 116px;
+    top: 242px;
+    left: 10px;
     line-height: 82.5%;
   }
 
-  .decorated-zone::before{
-    top:18px;
-    right:19px;
-  }
-  
-  .first-square{
-    top:10px;
-    right:10px;
+  .header.decorated-zone::before {
+    top: 18px;
+    right: 19px;
   }
 
-  .second-square{
-    left:10px;
-    bottom:10px;
+  .first-square {
+    top: 10px;
+    right: 10px;
   }
 
-  .main{
+  .second-square {
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .about {
     bottom: 66px;
-    left:10px;
+    left: 10px;
     max-width: 355px;
+  }
+
+  .footer {
+    font-size: 116px;
+    min-height: 668px;
+    padding: 10px;
   }
 }
