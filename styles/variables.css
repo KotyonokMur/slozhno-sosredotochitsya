@@ -14,6 +14,8 @@
   --header-color:  #DB00FF;
   /*Тень h1*/
   --header-shadow: 4px 4px 0px #FF0070;
+  /*Тень footer*/
+  --footer-shadow: 2px 2px 0px #FF0070;
   /*Цвет h2*/
   --section-color:  #FF0070;
   /*Цвет параграфа под h1*/
@@ -23,6 +25,6 @@
   --text-color: #F1B2CE;
   /*bg страницы*/
   --bg-color: #000028;
-  /*Цвет текста footer*/
-  /*Цвет тени footer*/
+  /*Цвет тени ссылок*/
+  --link-shadow: 2px 2px 0px #FF0070;
 }
