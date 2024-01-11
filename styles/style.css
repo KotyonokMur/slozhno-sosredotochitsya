@@ -6,15 +6,45 @@
 .header {
   background-color: var(--bg-color, #000028);
   padding: 20px;
-  background-image: url("/images/cover-image-dark.png");
+  background-image: url("../images/cover-image-dark.png");
   background-size: cover;
   background-position: center;
-  min-height: 768px;
+  height: 100vh;
+  min-height: 668px;
+  max-height: 768px;
   min-width: 375px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/*Эллипс*/
-.header.decorated-zone::before {
+.decorated-zone::before,
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--section-color, #ff0070);
+  z-index: 1;
+}
+
+.decorated-zone::before {
+  top: 20px;
+  right: 20px;
+  border-bottom: none;
+  border-left: none;
+}
+
+.decorated-zone::after {
+  bottom: 20px;
+  left: 20px;
+  border-right: none;
+  border-top:none;
+}
+
+/*Эллипс в header*/
+.header__theme-menu-list::before{
   content: "";
   position: absolute;
   top: 28px;
@@ -27,21 +57,29 @@
   filter: drop-shadow(0px 0px 4px #ff0070);
 }
 
+/*Надпись "REC" в header*/
+.header__theme-menu-list::after{
+  position: absolute; 
+  content: "REC"; 
+  font-family: var(--text-font, sans-serif); 
+  color: var(--section-color, #ff0070); 
+  font-size: 18px; 
+  font-weight: 400; 
+  line-height: 25px;
+  top:20px;
+  right:48px;
+}
+
 /*Выбор темы*/
-.header__theme-menu-list {
-  font-family: var(--main-font, sans-serif);
-  color: var(--section-color, #ff0070);
-}
-
-.header__theme-menu-item {
-  font-size: 18px;
-}
-
 .header__theme-menu-list {
   display: flex;
   justify-content: center;
   flex-direction: row;
   gap: 10px;
+  font-family: var(--text-font);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--section-color, #ff0070);
 }
 
 .header__theme-menu-button {
@@ -80,64 +118,37 @@
   position: relative;
 }
 
-
-/*Квадратные рамки для тёмной темы*/
-.first-square {
-  position: absolute; /* Позиционируем квадрат абсолютно относительно header */
-  top: 20px;
-  right: 20px;
-  width: 25px;
-  height: 25px;
-  border: 2px solid var(--section-color, #ff0070);
-  border-bottom: none;
-  border-left: none;
-}
-
-.second-square {
-  position: absolute; /* Позиционируем квадрат абсолютно относительно header */
-  left: 20px;
-  bottom: 20px;
-  width: 25px;
-  height: 25px;
-  border: 2px solid var(--section-color, #ff0070);
-  border-right: none;
-  border-top: none;
-}
-
 /* текст перед квадратом */
 .header .first-square::before {
   position: absolute;
   content: "REC";
   right: calc(100% + 3px);
   top: 0;
-  font-family: var(--main-font, sans-serif);
+  font-family: var(--text-font);
   color: var(--section-color, #ff0070);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 25px;
 }
 
 /*h1*/
-.title {
-  /*Скорее всего ошибки в шрифте*/
-  position: absolute;
-  left: 0px;
-  top: 300px;
-  word-spacing: 90px;
+.main-title {
   word-wrap: break-word;
-  font-family: var(--section-font, serif);
+  font-family: var(--section-font);
   color: var(--header-color, #db00ff);
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
   text-shadow:var(--header-shadow);
+  margin: auto;
+  margin-left: -20px;
+  margin-top: clamp(9.063rem, 37.109vw - 8.75rem, 15rem);
 }
 
 /*Позиционка описания страницы*/
-.about {
-  position: absolute;
-  width: clamp(22.188rem, 20.955vw + 17.276rem, 30.688rem);
-  bottom: 134px;
-  right: 20px;
+.header-paragraph {
+  width: clamp(22.75rem, 49.609vw - 1.063rem, 30.688rem);
+  margin-bottom: 115px; /*десктоп*/
+  margin-left: auto;
 }
 
 /*Стилизация секции*/
@@ -153,37 +164,39 @@
   gap: 20px;
 }
 
-/*Секция*/
-.section {
+/*Стилизованная секция для текста с фоном*/
+.stylized-section {
   background-color: var(--list-background, #ff0070);
   color: var(--list-color, #000028);
-  font-family: var(--section-font, sans-serif);
+  font-family: var(--section-font);
   font-weight: 700;
   font-size: 18px;
   text-wrap: wrap;
   line-height: 23.4px;
-  word-spacing: 7px;
+}
+
+/*Для третьей контентной секции*/
+h4.stylized-section{
+  font-family: var(--text-font);
+  font-weight: 400;
 }
 
 /*h2*/
 .section-title {
   color: var(--section-color, #ff0070);
-  font-family: var(--section-font, sans-serif);
+  font-family: var(--section-font);
   font-weight: 700;
   font-size: 18px;
-  line-height: 23.4px;
   flex-shrink: 0; /* Предотвратить сжатие элемента */
-  word-spacing: 10px;
 }
 
 /*Текст под секцией*/
 .section-text {
   color: var(--text-color, #f1b2ce);
-  font-family: var(--section-font, sans-serif);
+  font-family: var(--text-font);
   font-weight: 400;
   font-size: 18px;
   line-height: 23.4px;
-  letter-spacing: 2px;
 }
 
 /*Расположения блоков контента*/
@@ -198,12 +211,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-/*Если есть span и далее идёт список*/
-/*(Для третьей секции)*/
-span ~ .section-list_item > span {
-  font-weight: 400;
+  width: 100%;
 }
 
 /*Ссылки в тексте*/
@@ -244,11 +252,12 @@ span ~ .section-list_item > span {
 /*Подвал*/
 .footer {
   background-color: var(--bg-color, #000028);
-  min-height: 768px;
+  height: 100vh;
+  min-height: 668px;
   min-width: 375px;
   padding: 20px;
 
-  font-family: var(--section-font, serif);
+  font-family: var(--section-font);
   color: var(--header-color, #db00ff);
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
@@ -259,10 +268,11 @@ span ~ .section-list_item > span {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 185px;
 }
 
 /*Для планшетного/десктопного контента (Если ширина больше 544px)*/
-@media screen and (min-width: 544px) {
+@media screen and (min-width: 592px) {
   .section-title {
     width: clamp(14.75rem, 30.859vw - 0.063rem, 19.688rem);
   }
@@ -270,6 +280,11 @@ span ~ .section-list_item > span {
   /*Если нужно сделать список контента строчным (в колонку по умолчанию)*/
   .row-content {
     flex-direction: row;
+    flex: 1;
+  }
+
+  .group:last-of-type{
+    padding-bottom: 60px;
   }
 
   /*Грид-сетка*/
@@ -311,6 +326,16 @@ span ~ .section-list_item > span {
 @media screen and (max-width: 768px) {
   .header {
     min-height: 1024px;
+    max-height: 1024px;
+  }
+
+  .header-paragraph{
+    width: clamp(22.188rem, 2.29vw + 21.651rem, 22.75rem);
+    margin-bottom: 163px;
+  }
+
+  .header__theme-menu{
+    margin-left: auto;
   }
 
   .header__theme-menu-list {
@@ -318,7 +343,6 @@ span ~ .section-list_item > span {
     align-items: end;
     flex-direction: column;
     margin-top: clamp(4.063rem, 27.226vw - 2.319rem, 10.75rem);
-    gap: 10px;
   }
 
   .title {
@@ -326,14 +350,13 @@ span ~ .section-list_item > span {
     word-spacing: 70px;
   }
 
-  .about {
-    bottom: 183px;
-    width: clamp(22.188rem, 2.29vw + 21.651rem, 22.75rem);
-    padding-right: 20px;
+  .section-list{
+    flex-direction: column;
   }
 
   .footer {
     min-height: 1024px;
+    padding-bottom: 20px;
   }
 }
 
@@ -342,34 +365,42 @@ span ~ .section-list_item > span {
   .header {
     padding: 10px;
     min-height: 668px;
+    max-height: 668px;
   }
 
-  .title {
+  .main-title {
     font-size: 116px;
-    top: 242px;
-    left: 10px;
     line-height: 82.5%;
+    margin-left: 0px;
+    margin-top: 67px;
   }
 
-  .header.decorated-zone::before {
-    top: 18px;
-    right: 19px;
+  .header-paragraph{
+    margin-bottom: 55px;
   }
 
-  .first-square {
+  /*Эллипс*/
+  .header__theme-menu-list::before{
+    top:19px;
+    right: 18px;
+  }
+
+  /*"REC"*/
+  .header__theme-menu-list::after{
+    top:10px;
+    right:38px;
+  }
+
+  /*Правый уголок*/
+  .decorated-zone::before {
     top: 10px;
     right: 10px;
   }
 
-  .second-square {
-    left: 10px;
+  /*Левый уголок*/
+  .decorated-zone::after {
     bottom: 10px;
-  }
-
-  .about {
-    bottom: 66px;
     left: 10px;
-    max-width: 355px;
   }
 
   .group {
@@ -381,13 +412,13 @@ span ~ .section-list_item > span {
     padding-top: 40px;
   }
 
-  .content {
-    gap: 10px;
+  .group:has(.photo-block) {
+    gap: 10px; /* значение, которое хотите применить, если есть .photo-block */
   }
 
   .footer {
     font-size: 116px;
     min-height: 668px;
-    padding: 10px;
+    max-height: 668px;
   }
 }

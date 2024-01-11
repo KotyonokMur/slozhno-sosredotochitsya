@@ -17,8 +17,8 @@
 }
 
 /* Скрытие эллипса и подписи REC для светлой темы */
-.theme_light .decorated-zone::before,
-.theme_light .first-square::before {
+.theme_light .header__theme-menu-list::before,
+.theme_light .header__theme-menu-list::after{
   display: none;
 }
 
@@ -26,4 +26,11 @@
 .theme_light .header {
   background-image: none;
   background-color: #FFF1F7;
+}
+
+@media screen and (max-width: 768px) {
+  .page.theme_light{
+    --header-shadow: 4px 4px 0px #FF8DCB;
+    --footer-shadow: 2px 2px 0px #FF8DCB;
+  }
 }

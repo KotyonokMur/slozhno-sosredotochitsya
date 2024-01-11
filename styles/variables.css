@@ -1,8 +1,8 @@
 :root{
   /*Всё, кроме текста*/
-  --section-font: 'IBM Plex mono bold', sans-serif;
+  --section-font: 'IBM Plex mono bold', monospace;
   /*Текст*/
-  --main-font: 'IBM Plex mono regular', sans-serif;
+  --text-font: 'IBM Plex mono regular', monospace;
   /*Цвет hover-эффекта*/
   --button-hover:rgba(255, 0, 112, 0.40);
   /*Цвет h1*/
