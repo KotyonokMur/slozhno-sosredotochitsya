@@ -1,8 +1,4 @@
 .page.theme_dark {
-    /*Всё, кроме текста*/
-    --section-font: 'IBM Plex mono bold', sans-serif;
-    /*Текст*/
-    --main-font: 'IBM Plex mono regular', sans-serif;
     /*Цвет hover-эффекта*/
     --button-hover:rgba(255, 0, 112, 0.40);
     /*Цвет h1*/

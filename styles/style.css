@@ -1,6 +1,6 @@
 /*Десктоп*/
 .page {
-  max-width: 1024px;
+  background-color: var(--bg-color);
 }
 
 .header {
@@ -10,7 +10,6 @@
   background-size: cover;
   background-position: center;
   height: 100vh;
-  min-height: 668px;
   max-height: 768px;
   min-width: 375px;
 
@@ -61,7 +60,7 @@
 .header__theme-menu-list::after{
   position: absolute; 
   content: "REC"; 
-  font-family: var(--text-font, sans-serif); 
+  font-family: var(--text-font); 
   color: var(--section-color, #ff0070); 
   font-size: 18px; 
   font-weight: 400; 
@@ -181,6 +180,12 @@ h4.stylized-section{
   font-weight: 400;
 }
 
+.pre-section{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
+
 /*h2*/
 .section-title {
   color: var(--section-color, #ff0070);
@@ -268,7 +273,7 @@ h4.stylized-section{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 185px;
+  padding-bottom: 20px;
 }
 
 /*Для планшетного/десктопного контента (Если ширина больше 544px)*/
@@ -326,7 +331,6 @@ h4.stylized-section{
 @media screen and (max-width: 768px) {
   .header {
     min-height: 1024px;
-    max-height: 1024px;
   }
 
   .header-paragraph{
@@ -365,7 +369,6 @@ h4.stylized-section{
   .header {
     padding: 10px;
     min-height: 668px;
-    max-height: 668px;
   }
 
   .main-title {
@@ -419,6 +422,5 @@ h4.stylized-section{
   .footer {
     font-size: 116px;
     min-height: 668px;
-    max-height: 668px;
   }
 }
